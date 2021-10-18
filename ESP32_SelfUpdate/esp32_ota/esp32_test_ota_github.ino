@@ -9,10 +9,10 @@ const char * password = "J12345678";
 
 
 String FirmwareVer = {
-  "2.4"
+  "2.5"
 };
-#define URL_fw_Version "https://github.com/jfnunez-dev/newrepo/blob/master/ESP32_SelfUpdate/esp32_ota/bin_version.txt"
-#define URL_fw_Bin "https://github.com/jfnunez-dev/newrepo/blob/master/ESP32_SelfUpdate/esp32_ota/fw.bin"
+#define URL_fw_Version "https://raw.githubusercontent.com/jfnunez-dev/newrepo/master/ESP32_SelfUpdate/esp32_ota/bin_version.txt"
+#define URL_fw_Bin "https://github.com/jfnunez-dev/newrepo/blob/master/ESP32_SelfUpdate/esp32_ota/fw.bin?raw=true"
 
 //#define URL_fw_Version "http://cade-make.000webhostapp.com/version.txt"
 //#define URL_fw_Bin "http://cade-make.000webhostapp.com/firmware.bin"
