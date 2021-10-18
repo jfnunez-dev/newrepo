@@ -3,16 +3,16 @@
 #include <HTTPUpdate.h>
 #include <WiFiClientSecure.h>
 #include "cert.h"
-
-const char * ssid = "home_wifi";
-const char * password = "helloworld";
+#define ONBOARD_LED  2
+const char * ssid = "Jack";
+const char * password = "J12345678";
 
 
 String FirmwareVer = {
-  "2.2.1"
+  "2.4"
 };
-#define URL_fw_Version "https://raw.githubusercontent.com/jfnunez-dev/newrepo/master/esp32_ota/bin_version.txt"
-#define URL_fw_Bin "https://raw.githubusercontent.com/jfnunez-dev/newrepo/master/esp32_ota/fw.bin"
+#define URL_fw_Version "https://github.com/jfnunez-dev/newrepo/blob/master/ESP32_SelfUpdate/esp32_ota/bin_version.txt"
+#define URL_fw_Bin "https://github.com/jfnunez-dev/newrepo/blob/master/ESP32_SelfUpdate/esp32_ota/fw.bin"
 
 //#define URL_fw_Version "http://cade-make.000webhostapp.com/version.txt"
 //#define URL_fw_Bin "http://cade-make.000webhostapp.com/firmware.bin"
@@ -81,7 +81,7 @@ void setup() {
   Serial.begin(115200);
   Serial.print("Active firmware version:");
   Serial.println(FirmwareVer);
-  pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(ONBOARD_LED, OUTPUT);
   connect_wifi();
 }
 void loop() {
@@ -111,7 +111,7 @@ void connect_wifi() {
 void firmwareUpdate(void) {
   WiFiClientSecure client;
   client.setCACert(rootCACertificate);
-  httpUpdate.setLedPin(LED_BUILTIN, LOW);
+  httpUpdate.setLedPin(ONBOARD_LED, LOW);
   t_httpUpdate_return ret = httpUpdate.update(client, URL_fw_Bin);
 
   switch (ret) {
